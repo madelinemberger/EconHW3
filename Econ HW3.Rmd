@@ -45,8 +45,26 @@ $Probability~of~Voting~Yes = (`r round(y_int, digits = 4)`) + (`r round(age30, d
 
 
 2. Based on this regression, what can you say about the value of a single prevented whale death? (Hint: Think about how risk reduction for all whales translates into the number of whale deaths avoided)
-```{r}
 
+
+If a 20% risk reduction saves 5 whales, then we can find that a 4% reduction will save one whale. Therefore, we can solve for the change in bid (used as a proxy for willingness to pay) for an additional 4% risk reduction.
+```{r}
+#Step 1: Find the coefficient for bid when risk is 0%
+#Inputs:
+#probability of voting yes = 0.5
+#age = 30
+#income = rich 
+#NEP = 34
+
+
+bid_0 <- (0.5- y_int - age30*1 - rich*1 - nep*34 - risk*0)/bid
+
+bid_4 <- (0.5- y_int - age30*1 - rich*1 - nep*34 - risk*4)/bid
+
+diff = bid_4-bid_0
+
+```
+The per person willingness to pay for a single whale is **$2.78**.
 
 ```
 
