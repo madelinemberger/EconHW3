@@ -237,8 +237,8 @@ veryrich &lt;- prob_lm$coefficients[9]
 nep &lt;- prob_lm$coefficients[10]
 bid &lt;- prob_lm$coefficients[11]
 risk &lt;- prob_lm$coefficients[12]</code></pre>
-<p><strong>Regression Model:</strong></p>
-<p><span class="math inline">\(Probability~of~voting~yes = 0.1197 + 0.0204(Age~to~30) + -0.0201(Age~to~40) + 0.01(Age~to~50) + -0.0162(Age~to~60) + 0.0088(Income~One~Percent) + 0.0027(Income~Poor) + 0.0075(Income~Rich) + 0.0468(Income~Very~Rich) + 0.0159(NEP) + -0.0011(Bid) + 7\times 10^{-4}(Risk~Reduction)\)</span></p>
+<p><strong>Linear Probability Model of Voting ‘yes’ on the ballot:</strong></p>
+<p><span class="math inline">\(Probability~of~Voting~Yes = (0.1197) + (0.0204)(age~to~30) + (-0.0201)(age~to~40) + (0.01)(age~to~50) + (-0.0162)(age~to~60) + (0.0027)(income:~poor) + (0.0075)(income:~rich) + (0.0468)(income:~very~rich) +(0.0088)(income:~one~percent) + (0.0159)(NEP) + (-0.0011)(bid) + (7\times 10^{-4})(risk~reduction)\)</span></p>
 <ol start="2" style="list-style-type: decimal">
 <li><p>Based on this regression, what can you say about the value of a single prevented whale death? (Hint: Think about how risk reduction for all whales translates into the number of whale deaths avoided)</p></li>
 <li><p>Pick three arbitrary respondents. For each of those respondents, estimate their WTP for a VSR program offering 60% risk reduction.</p></li>
