@@ -41,7 +41,7 @@ risk <- prob_lm$coefficients[12]
 
 **Regression Model:**  
   
-$Probability(Voting~Yes) = `r round(int, digits = 4)` + `r round(age_30, digits=4)`(Age~to~30) - `r round(age_40, digits=4)`(Age~to~40) + `r round(age_50, digits=4)`(Age~to~50) - `r round(age_60, digits=4)`(Age~to~60) + `r round(inc_one, digits=4)`(Income~One~Percent) + `r round(inc_poor, digits=4)`(Income~Poor) + `r round(inc_rich, digits=4)`(Income~Rich) + `r round(inc_veryrich,digits=4)`(Income~Very~Rich) + `r round(nep, digits=4)`(NEP) - `r round(bid, digits=4)`(Bid) + `r round(risk, digits=4)`(Risk~Reduction)$
+$Probability~of~voting~yes = `r round(y_int, digits = 4)` + `r round(age30, digits=4)`(Age~to~30) + `r round(age40, digits=4)`(Age~to~40) + `r round(age50, digits=4)`(Age~to~50) + `r round(age60, digits=4)`(Age~to~60) + `r round(one_per, digits=4)`(Income~One~Percent) + `r round(poor, digits=4)`(Income~Poor) + `r round(rich, digits=4)`(Income~Rich) + `r round(veryrich,digits=4)`(Income~Very~Rich) + `r round(nep, digits=4)`(NEP) + `r round(bid, digits=4)`(Bid) + `r round(risk, digits=4)`(Risk~Reduction)$
 
 
 2. Based on this regression, what can you say about the value of a single prevented whale death? (Hint: Think about how risk reduction for all whales translates into the number of whale deaths avoided)
