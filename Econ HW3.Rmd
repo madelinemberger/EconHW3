@@ -17,7 +17,7 @@ survey <- read.csv("HW3Data.csv")
 
 
 1. Create a linear probability model that predicts a respondent’s probability of voting ‘yes’ on the ballot based on their age, income, NEP score, the risk reduction offered by the program, and the cost of the program to that respondent. Show the model and interpret the regression coefficients.
-```{r}
+```{r include=FALSE, echo=FALSE}
 
 prob_lm <- lm(vote ~ age + income + NEP + bid + risk, data = survey)
 
@@ -48,7 +48,7 @@ $Probability~of~Voting~Yes = (`r round(y_int, digits = 4)`) + (`r round(age30, d
 
 
 If a 20% risk reduction saves 5 whales, then we can find that a 4% reduction will save one whale. Therefore, we can solve for the change in bid (used as a proxy for willingness to pay) for an additional 4% risk reduction.
-```{r}
+```{r include= FALSE, include= FALSE}
 #Step 1: Find the coefficient for bid when risk is 0%
 #Inputs:
 #probability of voting yes = 0.5
@@ -70,25 +70,26 @@ The per person willingness to pay for a single whale is **$2.78**.
 
 
 3. Pick three arbitrary respondents. For each of those respondents, estimate their WTP for a VSR program offering 60% risk reduction.
-```{r}
+```{r include=FALSE, echo=FALSE}
+
 
 ```
 
 
 4. Now repeat this process and estimate the mean WTP for a VSR program offering 60% risk reduction among Santa Barbara County households.
-```{r}
+```{r include=FALSE, echo=FALSE}
 
 ```
 
 
 5. If there are 150,000 households in Santa Barbara County, estimate the total benefit of a VSR program to these households.
-```{r}
+```{r include=FALSE, echo=FALSE}
 
 ```
 
 
 6. Based only on these benefits, do the benefits of the VSR program outweigh the costs?
-```{r}
+```{r include= FALSE, echo=FALSE}
 
 ```
 
