@@ -66,12 +66,27 @@ diff = bid_4-bid_0
 ```
 The per person willingness to pay for a single whale is **$2.78**.
 
-```
 
 
 3. Pick three arbitrary respondents. For each of those respondents, estimate their WTP for a VSR program offering 60% risk reduction.
-```{r include=FALSE, echo=FALSE}
 
+```{r include=FALSE, echo=FALSE}
+#choose three random respondents from the table 
+#plug in their values, and solve for bid
+#number in bid_x corresponds to row
+##########################################
+
+#Individual 110
+
+bid_110 <- (0.5- y_int - age30*1 - rich*1 - nep*36 - risk*60)/bid
+
+#Individual 27
+
+bid_27 <- (0.5- y_int - age30*1 - one_per*1 - nep*44 - risk*60)/bid
+
+#Individual 54
+
+bid_54 <- (0.5- y_int - age30*1 - nep*48 - risk*60)/bid
 
 ```
 
