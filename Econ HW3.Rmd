@@ -23,7 +23,18 @@ prob_lm <- lm(vote ~ age + income + NEP + bid + risk, data = survey)
 
 summary(prob_lm)
 
-
+y_int <- prob_lm$coefficients[1]
+age50 <- prob_lm$coefficients[2]
+age40 <- prob_lm$coefficients[3]
+age60 <- prob_lm$coefficients[4]
+age30 <- prob_lm$coefficients[5]
+one_per <- prob_lm$coefficients[6]
+poor <- prob_lm$coefficients[7]
+rich <- prob_lm$coefficients[8]
+veryrich <- prob_lm$coefficients[9]
+nep <- prob_lm$coefficients[10]
+bid <- prob_lm$coefficients[11])
+risk <- prob_lm$coefficients[12]
 
 
 ```
