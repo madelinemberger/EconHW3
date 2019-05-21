@@ -9,7 +9,7 @@
 <meta name="generator" content="pandoc" />
 
 
-<meta name="author" content="Madeline Berger" />
+<meta name="author" content="Madeline Berger &amp; Ilayda Dinc" />
 
 
 <title>Econ HW3</title>
@@ -185,18 +185,18 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Econ HW3</h1>
-<h4 class="author"><em>Madeline Berger</em></h4>
+<h4 class="author"><em>Madeline Berger &amp; Ilayda Dinc</em></h4>
 <h4 class="date"><em>5/16/2019</em></h4>
 
 </div>
 
 
-<p>mode income : one percent</p>
-<p>mode age: tothirty</p>
-<div id="create-a-linear-probability-model-that-predicts-a-respondents-probability-of-voting-yes-on-the-ballot-based-on-their-age-income-nep-score-the-risk-reduction-offered-by-the-program-and-the-cost-of-the-program-to-that-respondent.-show-the-model-and-interpret-the-regression-coefficients." class="section level3">
-<h3>1. Create a linear probability model that predicts a respondent’s probability of voting ‘yes’ on the ballot based on their age, income, NEP score, the risk reduction offered by the program, and the cost of the program to that respondent. Show the model and interpret the regression coefficients.</h3>
+<p>mode income : one percent mode age: tothirty</p>
+<div id="create-a-linear-probability-model-that-predicts-a-respondents-probability-of-voting-yes-on-the-ballot-based-on-their-age-income-nep-score-the-risk-reduction-offered-by-the-program-and-the-cost-of-the-program-to-that-respondent.-show-the-model-and-interpret-the-regression-coefficients." class="section level4">
+<h4>1. Create a linear probability model that predicts a respondent’s probability of voting ‘yes’ on the ballot based on their age, income, NEP score, the risk reduction offered by the program, and the cost of the program to that respondent. Show the model and interpret the regression coefficients.</h4>
 <p><strong>Linear Probability Model of Voting ‘yes’ on the ballot:</strong></p>
 <p><span class="math inline">\(Probability~of~Voting~Yes = (0.1197) + (0.0204)(age~to~30) + (-0.0201)(age~to~40) + (0.01)(age~to~50) + (-0.0162)(age~to~60) + (0.0027)(income:~poor) + (0.0075)(income:~rich) + (0.0468)(income:~very~rich) +(0.0088)(income:~one~percent) + (0.0159)(NEP) + (-0.0011)(bid) + (7\times 10^{-4})(risk~reduction)\)</span></p>
+</div>
 <div id="based-on-this-regression-what-can-you-say-about-the-value-of-a-single-prevented-whale-death-hint-think-about-how-risk-reduction-for-all-whales-translates-into-the-number-of-whale-deaths-avoided" class="section level4">
 <h4>2. Based on this regression, what can you say about the value of a single prevented whale death? (Hint: Think about how risk reduction for all whales translates into the number of whale deaths avoided)</h4>
 <p>If a 20% risk reduction saves 5 whales, then we can find that a 4% reduction will save one whale. Therefore, we can solve for the change in bid (used as a proxy for willingness to pay) for an additional 4% risk reduction.</p>
@@ -207,14 +207,13 @@ $(document).ready(function () {
 </div>
 <div id="now-repeat-this-process-and-estimate-the-mean-wtp-for-a-vsr-program-offering-60-risk-reduction-among-santa-barbara-county-households." class="section level4">
 <h4>4. Now repeat this process and estimate the <strong>mean WTP</strong> for a VSR program offering 60% risk reduction among Santa Barbara County households.</h4>
-<p>$ 0.5 = 0.1197 + 0.01(age<sub>to</sub>50) + 0.0159(NEP) - -0.0011(bid) + 710^{-4}(60)$</p>
+<p><span class="math inline">\(Average~Bid = 0.5 + 0.1197 + 0.01(age~to~50) + 0.0159(NEP) - + 7\times 10^{-4}(60) / -0.0011\)</span></p>
 </div>
 <div id="if-there-are-150000-households-in-santa-barbara-county-estimate-the-total-benefit-of-a-vsr-program-to-these-households." class="section level4">
 <h4>5. If there are 150,000 households in Santa Barbara County, estimate the total benefit of a VSR program to these households.</h4>
 </div>
 <div id="based-only-on-these-benefits-do-the-benefits-of-the-vsr-program-outweigh-the-costs" class="section level4">
 <h4>6. Based only on these benefits, do the benefits of the VSR program outweigh the costs?</h4>
-</div>
 </div>
 
 

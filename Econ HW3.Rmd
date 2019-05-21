@@ -193,7 +193,7 @@ results_70$bid = bid_avg60(i = incomes)
 ```
 
 
-$ 0.5 = `r round(y_int, digits = 4)` + `r round(age50, digits=4)`(age~to~50) + `r (round(nep, digits=4))`(NEP) - `r round(bid, digits=4)`(bid) + `r round(risk, digits=4)`(60)$  
+$Average~Bid = 0.5 + `r round(y_int, digits = 4)` + `r round(age50, digits=4)`(age~to~50) + `r round(nep, digits=4)`(NEP) -  + `r round(risk, digits=4)`(60) / `r round(bid, digits=4)`$  
 
 
 
