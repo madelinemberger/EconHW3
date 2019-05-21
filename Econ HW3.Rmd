@@ -32,7 +32,7 @@ mode income : one percent
 mode age: tothirty
 
 
-1. Create a linear probability model that predicts a respondent’s probability of voting ‘yes’ on the ballot based on their age, income, NEP score, the risk reduction offered by the program, and the cost of the program to that respondent. Show the model and interpret the regression coefficients.
+###1. Create a linear probability model that predicts a respondent’s probability of voting ‘yes’ on the ballot based on their age, income, NEP score, the risk reduction offered by the program, and the cost of the program to that respondent. Show the model and interpret the regression coefficients.
 ```{r include=FALSE, echo=FALSE}
 
 prob_lm <- lm(vote ~ age + income + NEP + bid + risk, data = survey)
@@ -60,7 +60,7 @@ risk <- prob_lm$coefficients[12]
 $Probability~of~Voting~Yes = (`r round(y_int, digits = 4)`) + (`r round(age30, digits=4)`)(age~to~30) + (`r round(age40, digits=4)`)(age~to~40) + (`r round(age50, digits=4)`)(age~to~50) + (`r round(age60, digits=4)`)(age~to~60) + (`r round(poor, digits=4)`)(income:~poor) + (`r round(rich, digits=4)`)(income:~rich) + (`r round(veryrich,digits=4)`)(income:~very~rich) +(`r round(one_per, digits=4)`)(income:~one~percent) +  (`r round(nep, digits=4)`)(NEP) + (`r round(bid, digits=4)`)(bid) + (`r round(risk, digits=4)`)(risk~reduction)$
 
 
-2. Based on this regression, what can you say about the value of a single prevented whale death? (Hint: Think about how risk reduction for all whales translates into the number of whale deaths avoided)
+####2. Based on this regression, what can you say about the value of a single prevented whale death? (Hint: Think about how risk reduction for all whales translates into the number of whale deaths avoided)
 
 
 If a 20% risk reduction saves 5 whales, then we can find that a 4% reduction will save one whale. Therefore, we can solve for the change in bid (used as a proxy for willingness to pay) for an additional 4% risk reduction.
@@ -84,7 +84,7 @@ The per person willingness to pay for a single whale is **$2.78**.
 
 
 
-3. Pick three arbitrary respondents. For each of those respondents, estimate their WTP for a VSR program offering 60% risk reduction.
+####3. Pick three arbitrary respondents. For each of those respondents, estimate their WTP for a VSR program offering 60% risk reduction.
 
 ```{r include=FALSE, echo=FALSE}
 #choose three random respondents from the table 
@@ -107,7 +107,7 @@ bid_54 <- (0.5- y_int - age30*1 - nep*48 - risk*60)/bid
 ```
 
 
-4. Now repeat this process and estimate the mean WTP for a VSR program offering 60% risk reduction among Santa Barbara County households.
+####4. Now repeat this process and estimate the mean WTP for a VSR program offering 60% risk reduction among Santa Barbara County households.
 ```{r include=FALSE, echo=FALSE}
 
 
@@ -126,13 +126,13 @@ $ 0.5 = `r round(y_int, digits = 4)` + `r round(age50, digits=4)`(age~to~50) + `
 
 
 
-5. If there are 150,000 households in Santa Barbara County, estimate the total benefit of a VSR program to these households.
+####5. If there are 150,000 households in Santa Barbara County, estimate the total benefit of a VSR program to these households.
 ```{r include=FALSE, echo=FALSE}
 
 ```
 
 
-6. Based only on these benefits, do the benefits of the VSR program outweigh the costs?
+####6. Based only on these benefits, do the benefits of the VSR program outweigh the costs?
 ```{r include= FALSE, echo=FALSE}
 
 ```
