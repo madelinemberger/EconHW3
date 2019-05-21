@@ -73,8 +73,74 @@ $Probability~of~Voting~Yes = (`r round(y_int, digits = 4)`) + (`r round(age30, d
 #x = risk level
 
 
-p_yes_50 <- function(a,r,p,v,o,n,b,x){
-  y_int + age50*a+1*r+poor*p+one_per*o+veryrich*v+nep*n+bid*b+risk*x
+
+p_yes_50 <- function(n,b,x){
+  P = y_int +age30+one_per+nep*n+bid*b+risk*x
+  return(P)
+}
+
+
+################# FOR 30 ##################
+bid_avg30 <- function(i){
+  B = (0.5- y_int - age30 - 1*i - nep*avg_nep - risk*60)/bid
+  return(B)
+}
+
+incomes <- c(poor,0,rich,veryrich,one_per)
+length(incomes)
+
+results_30 <- data.frame(income = incomes, bid = NA)
+
+results_30$bid = bid_avg30(i = incomes)
+
+################# FOR 40 ##################
+
+bid_avg40 <- function(i){
+  B = (0.5- y_int - age40 - 1*i - nep*avg_nep - risk*60)/bid
+  return(B)
+}
+
+results_40<- data.frame(income = incomes, bid = NA)
+
+results_40$bid = bid_avg40(i = incomes)
+
+
+################# FOR 50 ##################
+
+bid_avg50 <- function(i){
+  B = (0.5- y_int - age50 - 1*i - nep*avg_nep - risk*60)/bid
+  return(B)
+}
+
+results_50<- data.frame(income = incomes, bid = NA)
+
+results_50$bid = bid_avg50(i = incomes)
+
+################# FOR 60 ##################
+
+bid_avg60 <- function(i){
+  B = (0.5- y_int - age60 - 1*i - nep*avg_nep - risk*60)/bid
+  return(B)
+}
+
+results_60<- data.frame(income = incomes, bid = NA)
+
+results_60$bid = bid_avg60(i = incomes)
+
+
+############## FOR 60+ ###################
+
+bid_avg70 <- function(i){
+  B = (0.5- y_int - 1*i - nep*avg_nep - risk*60)/bid
+  return(B)
+}
+
+results_70<- data.frame(income = incomes, bid = NA)
+
+results_70$bid = bid_avg60(i = incomes)
+
+
+
 
 
 ```
