@@ -43,6 +43,27 @@ risk <- prob_lm$coefficients[12]
   
 $Probability~of~Voting~Yes = (`r round(y_int, digits = 4)`) + (`r round(age30, digits=4)`)(age~to~30) + (`r round(age40, digits=4)`)(age~to~40) + (`r round(age50, digits=4)`)(age~to~50) + (`r round(age60, digits=4)`)(age~to~60) + (`r round(poor, digits=4)`)(income:~poor) + (`r round(rich, digits=4)`)(income:~rich) + (`r round(veryrich,digits=4)`)(income:~very~rich) +(`r round(one_per, digits=4)`)(income:~one~percent) +  (`r round(nep, digits=4)`)(NEP) + (`r round(bid, digits=4)`)(bid) + (`r round(risk, digits=4)`)(risk~reduction)$
 
+####1a. Defining the function 
+
+```{r}
+
+#a = are they over 50, 1 if yes 0 if no
+#r= are the rich
+#p = are they poor
+#v= are the very rich
+#o = are they part of the one percent
+#n = nep
+#b = bid
+#x = risk level
+
+
+p_yes_50 <- function(a,r,p,v,o,n,b,x){
+  y_int + age50*a+1*r+poor*p+one_per*o+veryrich*v+nep*n+bid*b+risk*x
+
+
+```
+
+
 
 ####2. Based on this regression, what can you say about the value of a single prevented whale death? (Hint: Think about how risk reduction for all whales translates into the number of whale deaths avoided)
 
@@ -91,7 +112,8 @@ bid_54 <- (0.5- y_int - age30*1 - nep*48 - risk*60)/bid
 ```
 
 
-####4. Now repeat this process and estimate the mean WTP for a VSR program offering 60% risk reduction among Santa Barbara County households.
+
+####4. Now repeat this process and estimate the **mean WTP** for a VSR program offering 60% risk reduction among Santa Barbara County households.
 ```{r include=FALSE, echo=FALSE}
 
 
