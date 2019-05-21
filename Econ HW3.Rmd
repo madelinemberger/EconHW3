@@ -73,11 +73,13 @@ If a 20% risk reduction saves 5 whales, then we can find that a 4% reduction wil
 #NEP = 34
 
 
-bid_0 <- (0.5- y_int - age30*1 - one_per* - avg_nep*34 - risk*0)/bid
+bid_0 <- (0.5- y_int - age30*1 - one_per*1 - avg_nep*nep - risk*0)/bid
 
-bid_4 <- (0.5- y_int - age30*1 - one_per*1 - avg*34 - risk*4)/bid
+bid_4 <- (0.5- y_int - age30*1 - one_per*1 - avg_nep*nep - risk*4)/bid
 
 diff = bid_4-bid_0
+
+diff
 
 ```
 The per person willingness to pay for a single whale is **$2.78**.
