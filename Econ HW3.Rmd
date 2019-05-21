@@ -193,7 +193,7 @@ results_70$bid = bid_avg60(i = incomes)
 ```
 
 
-$Average~Bid = 0.5 + `r round(y_int, digits = 4)` + (age~coefficient)(age~group) +(income~coefficient)(income~group) `r round(nep, digits=4)`(average NEP) -  + `r round(risk, digits=4)`(60) / `r round(bid, digits=4)`$  
+$Average~Bid = 0.5 + `r round(y_int, digits = 4)` + (age~coefficient)(age~group) +(income~coefficient)(income~group) `r round(nep, digits=4)`(average~NEP) -  + `r round(risk, digits=4)`(60) / `r round(bid, digits=4)`$  
 
 The process is repeated for 5 different age and income groups, resulting in 25 different combinations (See Table 1 below). Then, weighted average of different combinations is calculated. So, the mean willingness to pay for a VSR program offering 60% risk reduction is $263.24.
 
@@ -202,7 +202,7 @@ The process is repeated for 5 different age and income groups, resulting in 25 d
 
 At the previous step, mean willingness to pay for a VSR program offering 60% risk reduction among Santa Barbara County households is calculated as $263.24. 
 
-So, if there are 150,000 households in Santa Barbara County, thetotal benefit of a VSR program is estimated as $39,485,302.1.
+So, if there are 150,000 households in Santa Barbara County, the total benefit of a VSR program is estimated as $39,485,302.1.
 
 
 ####6. Based only on these benefits, do the benefits of the VSR program outweigh the costs?
