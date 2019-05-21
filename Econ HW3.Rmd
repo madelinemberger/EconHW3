@@ -12,8 +12,24 @@ library(tidyverse)
 
 survey <- read.csv("HW3Data.csv")
 
+counts <- survey %>% 
+  count(income)
+
+counts
+
+counts2<-survey %>% 
+  count(age)
+
+counts2
+
+
+
 
 ```
+
+mode income : one percent
+
+mode age: tothirty
 
 
 ###1. Create a linear probability model that predicts a respondent’s probability of voting ‘yes’ on the ballot based on their age, income, NEP score, the risk reduction offered by the program, and the cost of the program to that respondent. Show the model and interpret the regression coefficients.
@@ -78,9 +94,9 @@ If a 20% risk reduction saves 5 whales, then we can find that a 4% reduction wil
 #NEP = 34
 
 
-bid_0 <- (0.5- y_int - age30*1 - rich*1 - nep*34 - risk*0)/bid
+bid_0 <- (0.5- y_int - age30*1 - one_per*1 - nep*34 - risk*0)/bid
 
-bid_4 <- (0.5- y_int - age30*1 - rich*1 - nep*34 - risk*4)/bid
+bid_4 <- (0.5- y_int - age30*1 - one_per*1 - nep*34 - risk*4)/bid
 
 diff = bid_4-bid_0
 
