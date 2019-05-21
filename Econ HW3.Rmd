@@ -1,6 +1,6 @@
 ---
 title: "Econ HW3"
-author: "Madeline Berger"
+author: "Madeline Berger & Ilayda Dinc"
 date: "5/16/2019"
 output: html_document
 ---
@@ -28,7 +28,6 @@ counts2
 ```
 
 mode income : one percent
-
 mode age: tothirty
 ```{r}
 groups <- survey %>% 
@@ -41,7 +40,7 @@ groups
 ```
 
 
-###1. Create a linear probability model that predicts a respondent’s probability of voting ‘yes’ on the ballot based on their age, income, NEP score, the risk reduction offered by the program, and the cost of the program to that respondent. Show the model and interpret the regression coefficients.
+####1. Create a linear probability model that predicts a respondent’s probability of voting ‘yes’ on the ballot based on their age, income, NEP score, the risk reduction offered by the program, and the cost of the program to that respondent. Show the model and interpret the regression coefficients.
 ```{r include=FALSE, echo=FALSE}
 
 prob_lm <- lm(vote ~ age + income + NEP + bid + risk, data = survey)
@@ -61,6 +60,9 @@ nep <- prob_lm$coefficients[10]
 bid <- prob_lm$coefficients[11]
 risk <- prob_lm$coefficients[12]
 
+avg_nep <- mean(survey$NEP)
+avg_income<- mode(survey$income)
+avg_age<-mode(survey$age)
 
 ```
 
@@ -119,7 +121,8 @@ bid_54 <- (0.5- y_int - age30*1 - nep*48 - risk*60)/bid
 ```
 
 
-####4. Now repeat this process and estimate the mean WTP for a VSR program offering 60% risk reduction among Santa Barbara County households.
+
+####4. Now repeat this process and estimate the **mean WTP** for a VSR program offering 60% risk reduction among Santa Barbara County households.
 ```{r include=FALSE, echo=FALSE}
 
 
@@ -127,14 +130,70 @@ avg_nep <- mean(survey$NEP)
 avg_income<- mode(survey$income)
 avg_age<-mode(survey$age)
 
-bid_60 <- (0.5- y_int - age30*1 - rich*1 - nep*34 - risk*0)/bid
+################# FOR 30 ##################
+bid_avg30 <- function(i){
+  B = (0.5- y_int - age30 - 1*i - nep*avg_nep - risk*60)/bid
+  return(B)
+}
+
+incomes <- c(poor,0,rich,veryrich,one_per)
+length(incomes)
+
+results_30 <- data.frame(income = incomes, bid = NA)
+
+results_30$bid = bid_avg30(i = incomes)
+
+################# FOR 40 ##################
+
+bid_avg40 <- function(i){
+  B = (0.5- y_int - age40 - 1*i - nep*avg_nep - risk*60)/bid
+  return(B)
+}
+
+results_40<- data.frame(income = incomes, bid = NA)
+
+results_40$bid = bid_avg40(i = incomes)
+
+
+################# FOR 50 ##################
+
+bid_avg50 <- function(i){
+  B = (0.5- y_int - age50 - 1*i - nep*avg_nep - risk*60)/bid
+  return(B)
+}
+
+results_50<- data.frame(income = incomes, bid = NA)
+
+results_50$bid = bid_avg50(i = incomes)
+
+################# FOR 60 ##################
+
+bid_avg60 <- function(i){
+  B = (0.5- y_int - age60 - 1*i - nep*avg_nep - risk*60)/bid
+  return(B)
+}
+
+results_60<- data.frame(income = incomes, bid = NA)
+
+results_60$bid = bid_avg60(i = incomes)
+
+
+############## FOR 60+ ###################
+
+bid_avg70 <- function(i){
+  B = (0.5- y_int - 1*i - nep*avg_nep - risk*60)/bid
+  return(B)
+}
+
+results_70<- data.frame(income = incomes, bid = NA)
+
+results_70$bid = bid_avg60(i = incomes)
 
 
 ```
-Average NEP is calculated as 38.366, whereas average income bracket is found to be .. and the average age bracket found to be ....
-Again, the probability of saying "yes" is taken as 0.5. Using average age, average income,and the average NEP, the willingness to pay is calculated as:
 
-$ 0.5 = `r round(y_int, digits = 4)` + `r round(age50, digits=4)`(age~to~50) + `r round(nep, digits=4)`(NEP) - `r round(bid, digits=4)`(bid) + `r round(risk, digits=4)`(60)$  
+
+$ 0.5 = `r round(y_int, digits = 4)` + `r round(age50, digits=4)`(age~to~50) + `r (round(nep, digits=4))`(NEP) - `r round(bid, digits=4)`(bid) + `r round(risk, digits=4)`(60)$  
 
 
 
