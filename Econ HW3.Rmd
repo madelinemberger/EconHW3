@@ -207,3 +207,12 @@ So, if there are 150,000 households in Santa Barbara County, thetotal benefit of
 ####6. Based only on these benefits, do the benefits of the VSR program outweigh the costs?
 
 Given that the cost of implementation is $7 million, the benefits of VSR program (~39 million) outweigh the cost.
+
+####7. Suppose the price of a carbon credit is $Z per ton, at what price Z* will the shipping industry decide to adopt the VSR for purely self-interested reasons? (Note: if ships voluntarily reduce speed, then the $7 million cost (noted above) of implementing the VSR would be avoided)
+
+Assuming that for any ship transiting the Santa Barbara Channel, a speed reduction (that results in a 60% risk reduction) will cost the shipper $1,000, but will result in 20 fewer tons of CO2 emitted per transit. If the price of a carbon credit is more than 50 dollars per ton, the shipping industry will decide to adopt the VSR, since the cost of the shipper will be outweighed by carbon credits.
+
+####8. Now suppose the carbon credit price is exactly Z*, so all ships voluntarily reduce speed to achieve the 60% risk reduction. Approximately how many whales would be saved by this? What would be the social value of allowing ships to enter the carbon trading market?
+
+
+Assuming that the reduction of risk of 20% will save at least 5 whales along the West Coast of the United States each year, if all ships voluntarily reduce speed to achieve the 60% risk reduction, approximnately 15 whales will be saved each year. The social value of 60% risk reduction is calculated in the section 4 as $263.24 which will also be created by allowing  ships to enter the carbon trading market.
