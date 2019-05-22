@@ -191,29 +191,94 @@ $(document).ready(function () {
 </div>
 
 
-<p>mode income : one percent mode age: tothirty</p>
 <div id="create-a-linear-probability-model-that-predicts-a-respondents-probability-of-voting-yes-on-the-ballot-based-on-their-age-income-nep-score-the-risk-reduction-offered-by-the-program-and-the-cost-of-the-program-to-that-respondent.-show-the-model-and-interpret-the-regression-coefficients." class="section level4">
 <h4>1. Create a linear probability model that predicts a respondent’s probability of voting ‘yes’ on the ballot based on their age, income, NEP score, the risk reduction offered by the program, and the cost of the program to that respondent. Show the model and interpret the regression coefficients.</h4>
+<pre class="r"><code>prob_lm &lt;- lm(vote ~ age + income + NEP + bid + risk, data = survey)
+
+summary(prob_lm)</code></pre>
+<p>Call: lm(formula = vote ~ age + income + NEP + bid + risk, data = survey)</p>
+<p>Residuals: Min 1Q Median 3Q Max -1.1078 -0.4242 0.1755 0.2968 0.7925</p>
+<p>Coefficients: Estimate Std. Error t value Pr(&gt;|t|)<br />
+(Intercept) 0.1196977 0.1198911 0.998 0.319<br />
+agetofifty 0.0099816 0.0633105 0.158 0.875<br />
+agetoforty -0.0201190 0.0623958 -0.322 0.747<br />
+agetosixty -0.0162261 0.0595666 -0.272 0.785<br />
+agetothirty 0.0204401 0.0578269 0.353 0.724<br />
+incomeone_percent 0.0088282 0.0598973 0.147 0.883<br />
+incomepoor 0.0027386 0.0649833 0.042 0.966<br />
+incomerich 0.0074891 0.0682176 0.110 0.913<br />
+incomevery_rich 0.0467922 0.0674876 0.693 0.488<br />
+NEP 0.0158639 0.0020887 7.595 1.58e-13 *** bid -0.0010699 0.0006585 -1.625 0.105<br />
+risk 0.0007445 0.0008363 0.890 0.374<br />
+— Signif. codes: 0 ‘<em><strong>’ 0.001 ’</strong>’ 0.01 ’</em>’ 0.05 ‘.’ 0.1 ‘’ 1</p>
+<p>Residual standard error: 0.4291 on 488 degrees of freedom Multiple R-squared: 0.1201, Adjusted R-squared: 0.1003 F-statistic: 6.055 on 11 and 488 DF, p-value: 2.549e-09</p>
+<pre class="r"><code>y_int &lt;- prob_lm$coefficients[1]
+age50 &lt;- prob_lm$coefficients[2]
+age40 &lt;- prob_lm$coefficients[3]
+age60 &lt;- prob_lm$coefficients[4]
+age30 &lt;- prob_lm$coefficients[5]
+one_per &lt;- prob_lm$coefficients[6]
+poor &lt;- prob_lm$coefficients[7]
+rich &lt;- prob_lm$coefficients[8]
+veryrich &lt;- prob_lm$coefficients[9]
+nep &lt;- prob_lm$coefficients[10]
+bid &lt;- prob_lm$coefficients[11]
+risk &lt;- prob_lm$coefficients[12]
+
+
+
+avg_nep &lt;- mean(survey$NEP)
+avg_income&lt;- mode(survey$income)
+avg_age&lt;-mode(survey$age)
+
+
+stargazer(prob_lm)</code></pre>
+% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu % Date and time: Tue, May 21, 2019 - 21:19:35
+
 <p><strong>Linear Probability Model of Voting ‘yes’ on the ballot:</strong></p>
 <p><span class="math inline">\(Probability~of~Voting~Yes = (0.1197) + (0.0204)(age~to~30) + (-0.0201)(age~to~40) + (0.01)(age~to~50) + (-0.0162)(age~to~60) + (0.0027)(income:~poor) + (0.0075)(income:~rich) + (0.0468)(income:~very~rich) +(0.0088)(income:~one~percent) + (0.0159)(NEP) + (-0.0011)(bid) + (7\times 10^{-4})(risk~reduction)\)</span></p>
 </div>
 <div id="based-on-this-regression-what-can-you-say-about-the-value-of-a-single-prevented-whale-death-hint-think-about-how-risk-reduction-for-all-whales-translates-into-the-number-of-whale-deaths-avoided" class="section level4">
 <h4>2. Based on this regression, what can you say about the value of a single prevented whale death? (Hint: Think about how risk reduction for all whales translates into the number of whale deaths avoided)</h4>
 <p>If a 20% risk reduction saves 5 whales, then we can find that a 4% reduction will save one whale. Therefore, we can solve for the change in bid (used as a proxy for willingness to pay) for an additional 4% risk reduction.</p>
+<p><span class="math inline">\(Willingness~to~pay= 0.5 + 0.1197 + 0.0204(1) +0.0088(1) 0.0159(average~NEP) - + 7\times 10^{-4}(0) / -0.0011\)</span></p>
+<p>= <span class="math inline">\(240.7713\)</span></p>
+<p><span class="math inline">\(Willingness~to~pay = 0.5 + 0.1197 + 0.0204(1) +0.0088(1) 0.0159(average~NEP) - + 7\times 10^{-4}(4) / -0.0011\)</span></p>
+<p>=<span class="math inline">\(243.5547\)</span></p>
+<p><span class="math inline">\(Marginal~willingness~to~pay = 243.5547-240.7713\)</span></p>
 <p>The per person willingness to pay for a single whale is <strong>$2.78</strong>.</p>
 </div>
 <div id="pick-three-arbitrary-respondents.-for-each-of-those-respondents-estimate-their-wtp-for-a-vsr-program-offering-60-risk-reduction." class="section level4">
 <h4>3. Pick three arbitrary respondents. For each of those respondents, estimate their WTP for a VSR program offering 60% risk reduction.</h4>
+<p>3 respondents were randomly chosen from the survey, with the numbers below indicating row number. Their willingness to pay was found from the equation below using their specific age, income and environmental concern:</p>
+<p><strong>Individual 110</strong></p>
+<p><span class="math inline">\(Bid = 0.5 - 0.1197 - 0.0204(1) - 0.0075(1) - 0.0159(36) - 7\times 10^{-4}*(60)/-0.0011\)</span> = <span class="math inline">\(246.1888\)</span></p>
+<p><strong>Individual 27</strong></p>
+<p><span class="math inline">\(Bid = (0.5- 0.1197 - 0.0204(1) - 0.0075(1) - 0.0159(44) - 7\times 10^{-4}*(60)/-0.0011\)</span> = <span class="math inline">\(366.0605\)</span></p>
+<p><strong>Individual 54</strong></p>
+<p><span class="math inline">\(Bid = (0.5- 0.1197 - 0.0204(1) - 0.0159(48) - 7\times 10^{-4}*(60)/-0.0011\)</span> = <span class="math inline">\(417.1191\)</span></p>
 </div>
 <div id="now-repeat-this-process-and-estimate-the-mean-wtp-for-a-vsr-program-offering-60-risk-reduction-among-santa-barbara-county-households." class="section level4">
 <h4>4. Now repeat this process and estimate the <strong>mean WTP</strong> for a VSR program offering 60% risk reduction among Santa Barbara County households.</h4>
-<p><span class="math inline">\(Average~Bid = 0.5 + 0.1197 + 0.01(age~to~50) + 0.0159(NEP) - + 7\times 10^{-4}(60) / -0.0011\)</span></p>
+<p><span class="math inline">\(Average~Bid = 0.5 + 0.1197 + (age~coefficient)(age~group) +(income~coefficient)(income~group) + 0.0159(average~NEP) - + 7\times 10^{-4}(60) / -0.0011\)</span></p>
+<p>The process is repeated for 5 different age and income groups, resulting in 25 different combinations (See Table 1 below). Then, weighted average of different combinations is calculated. So, the mean willingness to pay for a VSR program offering 60% risk reduction is <strong>$263.24</strong>.</p>
 </div>
 <div id="if-there-are-150000-households-in-santa-barbara-county-estimate-the-total-benefit-of-a-vsr-program-to-these-households." class="section level4">
 <h4>5. If there are 150,000 households in Santa Barbara County, estimate the total benefit of a VSR program to these households.</h4>
+<p>At the previous step, mean willingness to pay for a VSR program offering 60% risk reduction among Santa Barbara County households is calculated as $263.24.</p>
+<p>So, if there are 150,000 households in Santa Barbara County, the total benefit of a VSR program is estimated as <strong>$39,485,302.1</strong>.</p>
 </div>
 <div id="based-only-on-these-benefits-do-the-benefits-of-the-vsr-program-outweigh-the-costs" class="section level4">
 <h4>6. Based only on these benefits, do the benefits of the VSR program outweigh the costs?</h4>
+<p>Given that the cost of implementation is $7 million, the benefits of VSR program (~39 million) outweigh the cost.</p>
+</div>
+<div id="suppose-the-price-of-a-carbon-credit-is-z-per-ton-at-what-price-z-will-the-shipping-industry-decide-to-adopt-the-vsr-for-purely-self-interested-reasons-note-if-ships-voluntarily-reduce-speed-then-the-7-million-cost-noted-above-of-implementing-the-vsr-would-be-avoided" class="section level4">
+<h4>7. Suppose the price of a carbon credit is $Z per ton, at what price Z* will the shipping industry decide to adopt the VSR for purely self-interested reasons? (Note: if ships voluntarily reduce speed, then the $7 million cost (noted above) of implementing the VSR would be avoided)</h4>
+<p>Assuming that for any ship transiting the Santa Barbara Channel, a speed reduction (that results in a 60% risk reduction) will cost the shipper $1,000, but will result in 20 fewer tons of CO2 emitted per transit. If the price of a carbon credit is more than 50 dollars per ton, the shipping industry will decide to adopt the VSR, since the cost of the shipper will be outweighed by carbon credits.</p>
+</div>
+<div id="now-suppose-the-carbon-credit-price-is-exactly-z-so-all-ships-voluntarily-reduce-speed-to-achieve-the-60-risk-reduction.-approximately-how-many-whales-would-be-saved-by-this-what-would-be-the-social-value-of-allowing-ships-to-enter-the-carbon-trading-market" class="section level4">
+<h4>8. Now suppose the carbon credit price is exactly Z*, so all ships voluntarily reduce speed to achieve the 60% risk reduction. Approximately how many whales would be saved by this? What would be the social value of allowing ships to enter the carbon trading market?</h4>
+<p>Assuming that the reduction of risk of 20% will save at least 5 whales along the West Coast of the United States each year, if all ships voluntarily reduce speed to achieve the 60% risk reduction, approximnately 15 whales will be saved each year. The social value of 60% risk reduction is calculated in the section 4 as $263.24 which will also be created by allowing ships to enter the carbon trading market.</p>
 </div>
 
 
