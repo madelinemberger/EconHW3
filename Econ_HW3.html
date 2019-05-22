@@ -194,8 +194,190 @@ $(document).ready(function () {
 <div id="create-a-linear-probability-model-that-predicts-a-respondents-probability-of-voting-yes-on-the-ballot-based-on-their-age-income-nep-score-the-risk-reduction-offered-by-the-program-and-the-cost-of-the-program-to-that-respondent.-show-the-model-and-interpret-the-regression-coefficients." class="section level4">
 <h4>1. Create a linear probability model that predicts a respondent’s probability of voting ‘yes’ on the ballot based on their age, income, NEP score, the risk reduction offered by the program, and the cost of the program to that respondent. Show the model and interpret the regression coefficients.</h4>
 <pre class="r"><code>prob_lm &lt;- lm(vote ~ age + income + NEP + bid + risk, data = survey)
-
-summary(prob_lm)</code></pre>
+stargazer(prob_lm, type = 'html', single.row = TRUE)</code></pre>
+<table style="text-align:center">
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="1" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+vote
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+agetofifty
+</td>
+<td>
+0.010 (0.063)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+agetoforty
+</td>
+<td>
+-0.020 (0.062)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+agetosixty
+</td>
+<td>
+-0.016 (0.060)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+agetothirty
+</td>
+<td>
+0.020 (0.058)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+incomeone_percent
+</td>
+<td>
+0.009 (0.060)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+incomepoor
+</td>
+<td>
+0.003 (0.065)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+incomerich
+</td>
+<td>
+0.007 (0.068)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+incomevery_rich
+</td>
+<td>
+0.047 (0.067)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+NEP
+</td>
+<td>
+0.016<sup>***</sup> (0.002)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+bid
+</td>
+<td>
+-0.001 (0.001)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+risk
+</td>
+<td>
+0.001 (0.001)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+0.120 (0.120)
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+500
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.120
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.100
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+0.429 (df = 488)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+6.055<sup>***</sup> (df = 11; 488)
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td style="text-align:right">
+<sup><em></sup>p&lt;0.1; <sup><strong></sup>p&lt;0.05; <sup></strong></em></sup>p&lt;0.01
+</td>
+</tr>
+</table>
+<pre class="r"><code>summary(prob_lm)</code></pre>
 <p>Call: lm(formula = vote ~ age + income + NEP + bid + risk, data = survey)</p>
 <p>Residuals: Min 1Q Median 3Q Max -1.1078 -0.4242 0.1755 0.2968 0.7925</p>
 <p>Coefficients: Estimate Std. Error t value Pr(&gt;|t|)<br />
@@ -229,12 +411,7 @@ risk &lt;- prob_lm$coefficients[12]
 
 avg_nep &lt;- mean(survey$NEP)
 avg_income&lt;- mode(survey$income)
-avg_age&lt;-mode(survey$age)
-
-
-stargazer(prob_lm)</code></pre>
-% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu % Date and time: Tue, May 21, 2019 - 21:19:35
-
+avg_age&lt;-mode(survey$age)</code></pre>
 <p><strong>Linear Probability Model of Voting ‘yes’ on the ballot:</strong></p>
 <p><span class="math inline">\(Probability~of~Voting~Yes = (0.1197) + (0.0204)(age~to~30) + (-0.0201)(age~to~40) + (0.01)(age~to~50) + (-0.0162)(age~to~60) + (0.0027)(income:~poor) + (0.0075)(income:~rich) + (0.0468)(income:~very~rich) +(0.0088)(income:~one~percent) + (0.0159)(NEP) + (-0.0011)(bid) + (7\times 10^{-4})(risk~reduction)\)</span></p>
 </div>

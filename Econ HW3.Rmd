@@ -46,12 +46,15 @@ groups
 
 
 ####1. Create a linear probability model that predicts a respondent’s probability of voting ‘yes’ on the ballot based on their age, income, NEP score, the risk reduction offered by the program, and the cost of the program to that respondent. Show the model and interpret the regression coefficients.
-```{r results='asis'}
+```{r echo = FALSE, results='asis', message=FALSE}
 
 prob_lm <- lm(vote ~ age + income + NEP + bid + risk, data = survey)
+stargazer(prob_lm, type = 'latex', single.row = TRUE)
 
-summary(prob_lm)
+#summary(prob_lm)
+```
 
+```{r echo=FALSE}
 y_int <- prob_lm$coefficients[1]
 age50 <- prob_lm$coefficients[2]
 age40 <- prob_lm$coefficients[3]
@@ -72,7 +75,8 @@ avg_income<- mode(survey$income)
 avg_age<-mode(survey$age)
 
 
-stargazer(prob_lm, header = 'FALSE', type = 'latex')
+
+
 ```
 
 **Linear Probability Model of Voting 'yes' on the ballot:**  
