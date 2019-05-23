@@ -125,7 +125,7 @@ The per person willingness to pay for a single whale is **$2.78**.
 
 ####3. Pick three arbitrary respondents. For each of those respondents, estimate their WTP for a VSR program offering 60% risk reduction.
 
-3 respondents were randomly chosen from the survey, with the numbers below indicating row number. Their willingness to pay was found from the equation below using their specific age, income and environmental concern: 
+3 respondents were randomly chosen from the survey, with the numbers below indicating row number. Their willingness to pay was found from the equation below using their specific age, income and environmental concern. Again, the probability of voting 'yes' is taken as 0.5.
 
 ```{r include=FALSE, echo=FALSE}
 #choose three random respondents from the table 
@@ -236,7 +236,7 @@ results_70$bid = bid_avg60(i = incomes)
 
 $Average~Bid = 0.5 + `r round(y_int, digits = 4)` + (age~coefficient)(age~group) +(income~coefficient)(income~group) + `r round(nep, digits=4)`(average~NEP) -  + `r round(risk, digits=4)`(60) / `r round(bid, digits=4)`$  
 
-The process is repeated for 5 different age and income groups, resulting in 25 different combinations (See Table 1 below). Then, weighted average of different combinations is calculated. So, the mean willingness to pay for a VSR program offering 60% risk reduction is **$263.24**.
+Probability of 0.5 and average NEP of 38.366 are used.The process is repeated for 5 different age and income groups, resulting in 25 different combinations (See Table 1 below). Then, weighted average of different combinations is calculated.So, the mean willingness to pay for a VSR program offering 60% risk reduction is **$263.24**.
 
 
 ####5. If there are 150,000 households in Santa Barbara County, estimate the total benefit of a VSR program to these households.
