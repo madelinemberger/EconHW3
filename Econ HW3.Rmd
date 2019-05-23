@@ -80,14 +80,16 @@ avg_age<-mode(survey$age)
 ```
 
 **Linear Probability Model of Voting 'yes' on the ballot:**  
-  
+
+The linear proabability model of voting 'yes'
+
 $Probability~of~Voting~Yes = (`r round(y_int, digits = 4)`) + (`r round(age30, digits=4)`)(age~to~30) + (`r round(age40, digits=4)`)(age~to~40) + (`r round(age50, digits=4)`)(age~to~50) + (`r round(age60, digits=4)`)(age~to~60) + (`r round(poor, digits=4)`)(income:~poor) + (`r round(rich, digits=4)`)(income:~rich) + (`r round(veryrich,digits=4)`)(income:~very~rich) +(`r round(one_per, digits=4)`)(income:~one~percent) +  (`r round(nep, digits=4)`)(NEP) + (`r round(bid, digits=4)`)(bid) + (`r round(risk, digits=4)`)(risk~reduction)$
 
 
 ####2. Based on this regression, what can you say about the value of a single prevented whale death? (Hint: Think about how risk reduction for all whales translates into the number of whale deaths avoided)
 
 
-If a 20% risk reduction saves 5 whales, then we can find that a 4% reduction will save one whale. Therefore, we can solve for the change in bid (used as a proxy for willingness to pay) for an additional 4% risk reduction.
+If a 20% risk reduction saves 5 whales, then we can find that a 4% reduction will save one whale. Therefore, we can solve for the change in bid (used as a proxy for willingness to pay) for an additional 4% risk reduction. The modes of income and age groups are found to be one percent and to thirty, respectively. The mean NEP is calculated as 38.366. The probability of voting yes equation is rearranged to give the willingness to pay. The probability is taken as 0.5 which is taken as the point where consumers change from no to yes. Plugging in the risk, age, income, and NEP, the equations result as:
 ```{r include= FALSE, include= FALSE}
 #Step 1: Find the coefficient for bid when risk is 0%
 #Inputs:
